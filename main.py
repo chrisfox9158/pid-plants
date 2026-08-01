@@ -1,6 +1,7 @@
 import pidkit
 from cli import parse_args
 from plants import PLANTS
+from log import make_run_dir, log
 
 def build_plant(plant_class):
     parameters = {}
@@ -35,12 +36,15 @@ def run():
         control_output = pid.compute(pv, args.timestep)
         error = setpoint - pv
         plant.step(control_output, args.timestep)
-        t += args.timestep
 
-        step = (t, setpoint, pv, error, control_output)
+        step = (round(t, 5), setpoint, pv, error, control_output)
         run_log.append(step)
 
-    print(run_log)
+        t += args.timestep
+
+    run_dir = make_run_dir(args.plant)
+    log(run_log, run_dir)
+    print("Simulation Complete!")
 
 if __name__ == "__main__":
     run()
