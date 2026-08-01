@@ -20,8 +20,8 @@ def build_pid():
     kp = float(input("kp: "))
     ki = float(input("ki: "))
     kd = float(input("kd: "))
-    max_output = float(input("max_output: "))
     min_output = float(input("min_output: "))
+    max_output = float(input("max_output: "))
     return pidkit.PID(kp, ki, kd, setpoint, output_limits=(min_output, max_output)), setpoint
 
 def run():
