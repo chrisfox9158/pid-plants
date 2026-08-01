@@ -1,7 +1,7 @@
 class CartVelocity:
     PARAMS = {
-        "mass": {"prompt": "Mass", "type": float},
-        "opposing_force": {"prompt": "Opposing Force (Drag/Friction)", "type": float},
+        "mass": {"prompt": "Mass", "type": float, "default": 5.0},
+        "opposing_force": {"prompt": "Opposing Force (Drag/Friction)", "type": float, "default": 0.0},
         "v_initial": {"prompt": "Initial Velocity", "type": float, "default": 0.0},
     }
 
