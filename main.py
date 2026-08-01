@@ -1,7 +1,7 @@
 import pidkit
 from cli import parse_args
 from plants import PLANTS
-from log import make_run_dir, log
+from log import make_run_dir, log, chart
 
 def build_plant(plant_class):
     parameters = {}
@@ -44,6 +44,7 @@ def run():
 
     run_dir = make_run_dir(args.plant)
     log(run_log, run_dir)
+    chart(run_log, run_dir)
     print("Simulation Complete!")
 
 if __name__ == "__main__":
