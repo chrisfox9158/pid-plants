@@ -190,13 +190,13 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "matplotlib", specifier = ">=3.11.1" },
-    { name = "pidkit", git = "https://github.com/chrisfox9158/pidkit.git?rev=v0.1.0" },
+    { name = "pidkit", git = "https://github.com/chrisfox9158/pidkit.git?rev=feature%2Fautotune" },
 ]
 
 [[package]]
 name = "pidkit"
 version = "0.1.0"
-source = { git = "https://github.com/chrisfox9158/pidkit.git?rev=v0.1.0#e1d068ca2f9b2a1025d126dfb37a472109c1e877" }
+source = { git = "https://github.com/chrisfox9158/pidkit.git?rev=feature%2Fautotune#639df893c9effd67283c97262e32df53491029c0" }
 
 [[package]]
 name = "pillow"
