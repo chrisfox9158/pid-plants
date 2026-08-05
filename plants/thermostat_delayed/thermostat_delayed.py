@@ -1,4 +1,5 @@
 from collections import deque
+import math
 
 class ThermostatDelayed:
     PARAMS = {
@@ -23,14 +24,15 @@ class ThermostatDelayed:
         self.t_current = self.t_initial
         self.dt = dt
         self.theta = theta
-        self.maxlen = int(self.theta / self.dt)
+        raw_maxlen = int(self.theta / self.dt)
+        self.maxlen = max(1, int(math.ceil(raw_maxlen)))
         self.u_values = deque(maxlen=self.maxlen)
 
     def step(self, u, dt):
         if dt != self.dt:
             raise RuntimeError("step() timestep does not equal plant class timestep; please ensure initial dt matches the passed step() dt value.")
 
-        if len(self.u_values) >= int(self.theta / dt):
+        if len(self.u_values) >= self.maxlen:
             u_delayed = self.u_values[0]
         else:
             u_delayed = 0
