@@ -24,7 +24,7 @@ class ThermostatDelayed:
         self.t_current = self.t_initial
         self.dt = dt
         self.theta = theta
-        raw_maxlen = int(self.theta / self.dt)
+        raw_maxlen = self.theta / self.dt
         self.maxlen = max(1, int(math.ceil(raw_maxlen)))
         self.u_values = deque(maxlen=self.maxlen)
 
