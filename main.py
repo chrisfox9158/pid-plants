@@ -22,7 +22,7 @@ def build_pid():
     kd = float(input("kd: "))
     min_output = float(input("min_output: "))
     max_output = float(input("max_output: "))
-    return pidkit.PID(kp, ki, kd, setpoint, output_limits=(min_output, max_output)), setpoint
+    return pidkit.PID(kp=kp, ki=ki, kd=kd, setpoint=setpoint, output_limits=(min_output, max_output)), setpoint
 
 def run():
     args = parse_args()
@@ -33,7 +33,7 @@ def run():
     run_log = []
     for i in range(args.steps):
         pv = plant.get_state()
-        control_output = pid.compute(pv, args.timestep)
+        control_output = pid.compute(pv=pv, dt=args.timestep)
         error = setpoint - pv
         plant.step(control_output, args.timestep)
 
